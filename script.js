@@ -5,7 +5,7 @@ var map = L.map('map', {
 });
 
 var bounds = [[0,0], [1000,1000]];
-var image = L.imageOverlay('path/to/hallownest_map.png', bounds).addTo(map);
+var image = L.imageOverlay('https://github.com/TommyTommy10/hollow-knight/raw/main/Hallownest%20map.png', bounds).addTo(map);
 
 map.fitBounds(bounds);
 
