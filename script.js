@@ -1,38 +1,21 @@
 // script.js
-var map = L.map('map').setView([0, 0], 2); // Coordinata base e livello di zoom
-
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>'
-}).addTo(map);
-
-// Aggiungi marker per alcune aree di Hallownest con icone personalizzate
-var greenPathIcon = L.icon({
-    iconUrl: 'path_to_greenpath_icon.png', // Sostituisci con l'URL dell'icona personalizzata
-    iconSize: [38, 95],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76]
+var map = L.map('map', {
+    crs: L.CRS.Simple,
+    minZoom: -5
 });
 
-var greenPath = L.marker([51.5, -0.09], {icon: greenPathIcon}).addTo(map)
+var bounds = [[0,0], [1000,1000]];
+var image = L.imageOverlay('path/to/hallownest_map.png', bounds).addTo(map);
+
+map.fitBounds(bounds);
+
+// Aggiungi marker per alcune aree di Hallownest
+var greenPath = L.marker([400, 200]).addTo(map)
     .bindPopup('Greenpath')
     .openPopup();
 
-var cityOfTearsIcon = L.icon({
-    iconUrl: 'path_to_cityoftears_icon.png', // Sostituisci con l'URL dell'icona personalizzata
-    iconSize: [38, 95],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76]
-});
-
-var cityOfTears = L.marker([51.495, -0.083], {icon: cityOfTearsIcon}).addTo(map)
+var cityOfTears = L.marker([600, 500]).addTo(map)
     .bindPopup('City of Tears');
 
-var crystalPeakIcon = L.icon({
-    iconUrl: 'path_to_crystalpeak_icon.png', // Sostituisci con l'URL dell'icona personalizzata
-    iconSize: [38, 95],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76]
-});
-
-var crystalPeak = L.marker([51.49, -0.1], {icon: crystalPeakIcon}).addTo(map)
+var crystalPeak = L.marker([300, 700]).addTo(map)
     .bindPopup('Crystal Peak');
