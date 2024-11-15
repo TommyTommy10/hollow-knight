@@ -9,18 +9,30 @@
             background-color: #1c1c1c;
             color: #f0f0f0;
             font-family: 'Verdana', sans-serif;
+            text-align: center;
         }
         #map {
             height: 600px;
-            width: 100%;
+            width: 800px; /* Dimensioni della mappa */
             border: 2px solid #444;
-            margin-top: 20px;
+            margin: 20px auto;
             background: #1c1c1c;
+        }
+        h1 {
+            text-shadow: 2px 2px 4px #000;
+        }
+        .leaflet-container {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+        }
+        .leaflet-popup-content-wrapper {
+            background: #2c2c2c;
+            color: #fff;
         }
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">Mappa Interattiva di Hallownest</h1>
+    <h1>Mappa Interattiva di Hallownest</h1>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="script.js"></script>
