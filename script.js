@@ -13,19 +13,19 @@ var image = L.imageOverlay('https://github.com/TommyTommy10/hollow-knight/raw/ma
 map.fitBounds(bounds);
 map.setMaxBounds(bounds);
 
-// Aggiungi marker per alcune aree di Hallownest con popup personalizzati
+// Aggiungi marker per alcune aree di Hallownest con popup personalizzati e immagini
 var dirtmouth = L.marker([760, 220]).addTo(map)
-    .bindPopup('<div class="custom-popup">Dirtmouth</div>')
+    .bindPopup('<div class="custom-popup"><b>Dirtmouth</b><br>Il villaggio di partenza.<br><img src="URL_TO_IMAGE" width="200" /></div>')
     .openPopup();
 
 var greenPath = L.marker([600, 350]).addTo(map)
-    .bindPopup('<div class="custom-popup">Greenpath</div>');
+    .bindPopup('<div class="custom-popup"><b>Greenpath</b><br>Un'area lussureggiante e verde.<br><img src="URL_TO_IMAGE" width="200" /></div>');
 
 var cityOfTears = L.marker([400, 500]).addTo(map)
-    .bindPopup('<div class="custom-popup">City of Tears</div>');
+    .bindPopup('<div class="custom-popup"><b>City of Tears</b><br>La città capitale di Hallownest.<br><img src="URL_TO_IMAGE" width="200" /></div>');
 
 var kingdomsEdge = L.marker([200, 700]).addTo(map)
-    .bindPopup('<div class="custom-popup">Kingdom\'s Edge</div>');
+    .bindPopup('<div class="custom-popup"><b>Kingdom\'s Edge</b><br>L'area più esterna e selvaggia.<br><img src="URL_TO_IMAGE" width="200" /></div>');
 
 var theAbyss = L.marker([100, 900]).addTo(map)
-    .bindPopup('<div class="custom-popup">The Abyss</div>');
+    .bindPopup('<div class="custom-popup"><b>The Abyss</b><br>Un'area oscura e misteriosa.<br><img src="URL_TO_IMAGE" width="200" /></div>');
