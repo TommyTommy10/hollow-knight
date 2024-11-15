@@ -1,40 +1,31 @@
-body {
-    background-color: #0d0d0d;
-    color: #f5f5f5;
-    font-family: 'Garamond', serif;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-}
-h1 {
-    text-shadow: 2px 2px 4px #000;
-    font-size: 2.5em;
-    margin-top: 20px;
-    color: #d4af37; /* Oro tenue per il titolo */
-}
-#map {
-    height: 600px;
-    width: 800px; /* Dimensioni della mappa */
-    border: 2px solid #444;
-    margin: 20px auto;
-    background: #1c1c1c;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-}
-.leaflet-container {
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 8px;
-}
-.leaflet-popup-content-wrapper {
-    background: #2c2c2c;
-    color: #fff;
-    border-radius: 5px;
-    border: 1px solid #444;
-}
-.leaflet-popup-tip {
-    background: #444;
-}
-.custom-popup .leaflet-popup-content {
-    font-family: 'Garamond', serif;
-    color: #f5f5f5;
-}
+// script.js
+var w = 1024, h = 1024; // Dimensioni dell'immagine originale
+var map = L.map('map', {
+    crs: L.CRS.Simple,
+    minZoom: -5,
+    maxZoom: 2, // Limita lo zoom
+    maxBoundsViscosity: 1.0 // Limita lo scorrimento
+});
+
+var bounds = [[0,0], [h,w]];
+var image = L.imageOverlay('https://github.com/TommyTommy10/hollow-knight/raw/main/Hallownest%20map.png', bounds).addTo(map);
+
+map.fitBounds(bounds);
+map.setMaxBounds(bounds);
+
+// Aggiungi marker per alcune aree di Hallownest con popup personalizzati
+var dirtmouth = L.marker([760, 220]).addTo(map)
+    .bindPopup('<div class="custom-popup">Dirtmouth</div>')
+    .openPopup();
+
+var greenPath = L.marker([600, 350]).addTo(map)
+    .bindPopup('<div class="custom-popup">Greenpath</div>');
+
+var cityOfTears = L.marker([400, 500]).addTo(map)
+    .bindPopup('<div class="custom-popup">City of Tears</div>');
+
+var kingdomsEdge = L.marker([200, 700]).addTo(map)
+    .bindPopup('<div class="custom-popup">Kingdom\'s Edge</div>');
+
+var theAbyss = L.marker([100, 900]).addTo(map)
+    .bindPopup('<div class="custom-popup">The Abyss</div>');
