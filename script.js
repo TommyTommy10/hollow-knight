@@ -1,17 +1,17 @@
 // script.js
+var w = 1024, h = 1024; // Dimensioni dell'immagine originale
 var map = L.map('map', {
     crs: L.CRS.Simple,
-    minZoom: -5
+    minZoom: -5,
+    maxZoom: 1, // Limita lo zoom
+    maxBoundsViscosity: 1.0 // Limita lo scorrimento
 });
 
-var w = 1000, h = 1000; // Dimensioni originali dell'immagine
-var url = 'https://github.com/TommyTommy10/hollow-knight/raw/main/Hallownest%20map.png';
 var bounds = [[0,0], [h,w]];
+var image = L.imageOverlay('https://github.com/TommyTommy10/hollow-knight/raw/main/Hallownest%20map.png', bounds).addTo(map);
 
-var image = L.imageOverlay(url, bounds).addTo(map);
-
-map.setMaxBounds(bounds);
 map.fitBounds(bounds);
+map.setMaxBounds(bounds);
 
 // Aggiungi marker per alcune aree di Hallownest
 var dirtmouth = L.marker([760, 220]).addTo(map)
