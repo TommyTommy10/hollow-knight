@@ -2,8 +2,8 @@
 var w = 1024, h = 1024; // Dimensioni dell'immagine originale
 var map = L.map('map', {
     crs: L.CRS.Simple,
-    minZoom: -5,
-    maxZoom: 2, // Limita lo zoom
+    minZoom: -2, // Limita lo zoom out
+    maxZoom: 2, // Limita lo zoom in
     maxBoundsViscosity: 1.0 // Limita lo scorrimento
 });
 
