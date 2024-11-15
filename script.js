@@ -4,24 +4,28 @@ var map = L.map('map', {
     minZoom: -5
 });
 
-var bounds = [[0,0], [1000,1000]];
-var image = L.imageOverlay('https://github.com/TommyTommy10/hollow-knight/raw/main/Hallownest%20map.png', bounds).addTo(map);
+var w = 1000, h = 1000; // Dimensioni originali dell'immagine
+var url = 'https://github.com/TommyTommy10/hollow-knight/raw/main/Hallownest%20map.png';
+var bounds = [[0,0], [h,w]];
 
+var image = L.imageOverlay(url, bounds).addTo(map);
+
+map.setMaxBounds(bounds);
 map.fitBounds(bounds);
 
 // Aggiungi marker per alcune aree di Hallownest
-var dirtmouth = L.marker([220, 760]).addTo(map)
+var dirtmouth = L.marker([760, 220]).addTo(map)
     .bindPopup('Dirtmouth')
     .openPopup();
 
-var greenPath = L.marker([350, 600]).addTo(map)
+var greenPath = L.marker([600, 350]).addTo(map)
     .bindPopup('Greenpath');
 
-var cityOfTears = L.marker([500, 400]).addTo(map)
+var cityOfTears = L.marker([400, 500]).addTo(map)
     .bindPopup('City of Tears');
 
-var kingdomsEdge = L.marker([700, 200]).addTo(map)
+var kingdomsEdge = L.marker([200, 700]).addTo(map)
     .bindPopup("Kingdom's Edge");
 
-var theAbyss = L.marker([900, 100]).addTo(map)
+var theAbyss = L.marker([100, 900]).addTo(map)
     .bindPopup('The Abyss');
