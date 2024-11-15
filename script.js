@@ -9,7 +9,7 @@ var image = L.imageOverlay('https://github.com/TommyTommy10/hollow-knight/raw/ma
 
 map.fitBounds(bounds);
 
-// Aggiungi marker per le aree di Hallownest
+// Aggiungi marker per alcune aree di Hallownest
 var dirtmouth = L.marker([220, 760]).addTo(map)
     .bindPopup('Dirtmouth')
     .openPopup();
