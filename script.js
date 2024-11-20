@@ -1,31 +1,28 @@
 // script.js
-var w = 1024, h = 1024; // Dimensioni dell'immagine originale
-var map = L.map('map', {
-    crs: L.CRS.Simple,
-    minZoom: -2, // Limita lo zoom out
-    maxZoom: 2, // Limita lo zoom in
-    maxBoundsViscosity: 1.0 // Limita lo scorrimento
+document.addEventListener('DOMContentLoaded', () => {
+    const puzzle = document.getElementById('puzzle');
+    const question = document.createElement('p');
+    question.innerText = 'Qual è la chiave per fuggire da Dirtmouth?';
+    
+    const input = document.createElement('input');
+    input.setAttribute('type', 'text');
+    input.setAttribute('id', 'answer');
+    
+    const button = document.createElement('button');
+    button.innerText = 'Invia';
+    button.addEventListener('click', checkAnswer);
+    
+    puzzle.appendChild(question);
+    puzzle.appendChild(input);
+    puzzle.appendChild(button);
 });
 
-var bounds = [[0,0], [h,w]];
-var image = L.imageOverlay('https://github.com/TommyTommy10/hollow-knight/raw/main/Hallownest%20map.png', bounds).addTo(map);
-
-map.fitBounds(bounds);
-map.setMaxBounds(bounds);
-
-// Aggiungi marker per alcune aree di Hallownest con popup personalizzati
-var dirtmouth = L.marker([760, 220]).addTo(map)
-    .bindPopup('Dirtmouth')
-    .openPopup();
-
-var greenPath = L.marker([600, 350]).addTo(map)
-    .bindPopup('Greenpath');
-
-var cityOfTears = L.marker([400, 500]).addTo(map)
-    .bindPopup('City of Tears');
-
-var kingdomsEdge = L.marker([200, 700]).addTo(map)
-    .bindPopup("Kingdom's Edge");
-
-var theAbyss = L.marker([100, 900]).addTo(map)
-    .bindPopup('The Abyss');
+function checkAnswer() {
+    const answer = document.getElementById('answer').value.toLowerCase();
+    if (answer === 'coraggio') {  // Esempio di risposta corretta
+        alert('Bravo! Hai trovato la chiave per fuggire da Dirtmouth.');
+        // Passa alla stanza successiva
+    } else {
+        alert('Risposta sbagliata. Riprova.');
+    }
+}
