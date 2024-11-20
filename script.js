@@ -1,28 +1,41 @@
 // script.js
+const rooms = [
+    {
+        title: "Benvenuto in Dirtmouth",
+        description: "Risolvi l'enigma per trovare l'indizio nascosto.",
+        puzzles: [
+            { question: "Qual è il nome dell'unico cittadino rimasto a Dirtmouth?", answer: "Elderbug" },
+            { question: "Che cosa trovi nell'Antica Miniera di Dirtmouth?", answer: "Cristalli" },
+            { question: "Quale oggetto ti permette di saltare più in alto?", answer: "Mothwing Cloak" },
+            { question: "Chi è il fabbro delle armi a Dirtmouth?", answer: "Nailsmith" },
+            { question: "Qual è il nome dell'albero sacro situato in questa città?", answer: "Dream Tree" }
+        ]
+    },
+    // Aggiungi le altre stanze qui
+];
+
+let currentRoom = 0;
+let currentPuzzle = 0;
+
 document.addEventListener('DOMContentLoaded', () => {
-    const puzzle = document.getElementById('puzzle');
-    const question = document.createElement('p');
-    question.innerText = 'Qual è la chiave per fuggire da Dirtmouth?';
-    
-    const input = document.createElement('input');
-    input.setAttribute('type', 'text');
-    input.setAttribute('id', 'answer');
-    
-    const button = document.createElement('button');
-    button.innerText = 'Invia';
-    button.addEventListener('click', checkAnswer);
-    
-    puzzle.appendChild(question);
-    puzzle.appendChild(input);
-    puzzle.appendChild(button);
+    loadPuzzle();
 });
 
-function checkAnswer() {
-    const answer = document.getElementById('answer').value.toLowerCase();
-    if (answer === 'coraggio') {  // Esempio di risposta corretta
-        alert('Bravo! Hai trovato la chiave per fuggire da Dirtmouth.');
-        // Passa alla stanza successiva
-    } else {
-        alert('Risposta sbagliata. Riprova.');
-    }
+function loadPuzzle() {
+    const room = rooms[currentRoom];
+    document.getElementById('room-title').innerText = room.title;
+    document.getElementById('room-description').innerText = room.description;
+
+    const puzzle = room.puzzles[currentPuzzle];
+    const puzzleElement = document.getElementById('puzzle');
+    puzzleElement.innerHTML = `
+        <p>${puzzle.question}</p>
+        <input type="text" id="answer" />
+        <button onclick="checkAnswer()">Invia</button>
+    `;
 }
+
+function checkAnswer() {
+    const room = rooms[currentRoom];
+    const puzzle = room.puzzles[currentPuzzle];
+    const answer = document.getElementById('answer
