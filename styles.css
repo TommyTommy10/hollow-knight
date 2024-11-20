@@ -15,7 +15,8 @@ h1 {
     margin: 20px;
 }
 #room {
-    background: #1c1c1c;
+    background: url('URL_TO_BACKGROUND_IMAGE') no-repeat center center;
+    background-size: cover;
     padding: 20px;
     border: 2px solid #444;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -46,4 +47,16 @@ button {
 }
 button:hover {
     background-color: #e6bf47;
+}
+#result {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+.success {
+    color: #90ee90;
+    font-weight: bold;
+}
+.failure {
+    color: #ff6347;
+    font-weight: bold;
 }
