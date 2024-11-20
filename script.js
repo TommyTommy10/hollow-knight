@@ -44,31 +44,33 @@ function loadPuzzle() {
         <input type="text" id="answer" />
         <button onclick="checkAnswer()">Invia</button>
     `;
+    document.getElementById('result').innerText = '';
 }
 
 function checkAnswer() {
     const room = rooms[currentRoom];
     const puzzle = room.puzzles[currentPuzzle];
     const answer = document.getElementById('answer').value.toLowerCase();
+    const resultElement = document.getElementById('result');
     
     if (answer === puzzle.answer) {
-        alert('Bravo! Hai risolto l\'enigma.');
+        resultElement.innerHTML = '<span class="success">Bravo! Hai risolto l\'enigma.</span>';
         currentPuzzle++;
         if (currentPuzzle >= room.puzzles.length) {
             currentPuzzle = 0;
             currentRoom++;
             if (currentRoom >= rooms.length) {
-                alert('Complimenti! Hai completato l\'Escape Room.');
+                resultElement.innerHTML = '<span class="success">Complimenti! Hai completato l\'Escape Room.</span>';
                 document.getElementById('puzzle').innerHTML = '<p>Hai completato tutte le stanze!</p>';
                 document.getElementById('next-button').style.display = 'none';
             } else {
                 document.getElementById('next-button').style.display = 'block';
             }
         } else {
-            loadPuzzle();
+            setTimeout(loadPuzzle, 1000);  // Aggiunge un piccolo delay per migliorare l'esperienza utente
         }
     } else {
-        alert('Risposta sbagliata. Riprova.');
+        resultElement.innerHTML = '<span class="failure">Risposta sbagliata. Riprova.</span>';
     }
 }
 
